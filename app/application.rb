@@ -8,9 +8,11 @@ class Application
 
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      item = @@items.find{|i| i.name == item_name }
-      .each do |name|
-        resp.write "#{name.price}"
+      if item = @@items.find{|i| i.name == item_name}
+        resp.write item.price
+      else
+        resp.write "Item not found"
+        resp.staus = 400
 
       else
         resp.write "Route not found"
