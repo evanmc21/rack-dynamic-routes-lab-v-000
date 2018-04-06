@@ -13,9 +13,10 @@ class Application
       else
         resp.write "Item not found"
         resp.staus = 400
-
+      end
       else
         resp.write "Route not found"
         resp.status = 404
   end
+  resp.finish
 end
